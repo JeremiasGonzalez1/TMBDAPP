@@ -12,3 +12,5 @@ val Pink40 = Color(0xFF7D5260)
 
 val StarColor = Color(0xFFFFD600)
 val PlayButton = Color(0xFF00425A)
+val GraySearch = Color(0xFF828282)
+val WhiteFC = Color(0xFFFCFCFC)
