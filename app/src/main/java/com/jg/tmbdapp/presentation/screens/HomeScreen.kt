@@ -49,7 +49,7 @@ import coil.request.ImageRequest
 import com.jg.tmbdapp.BuildConfig
 import com.jg.tmbdapp.R
 import com.jg.tmbdapp.domain.popular.model.Popular
-import com.jg.tmbdapp.domain.popular.model.PopularItem
+import com.jg.tmbdapp.domain.utils.MovieItem
 import com.jg.tmbdapp.presentation.components.Profile
 import com.jg.tmbdapp.presentation.components.SearchBar
 import com.jg.tmbdapp.presentation.theme.PlayButton
@@ -92,7 +92,7 @@ fun HomeScreen( viewModel: HomeViewModel) {
                         horizontalArrangement = Arrangement.spacedBy(16.dp)
                     ){
                         items((listMovies.value as HomeUIState.Success<Popular>).value.listPopular) { popular ->
-                            ItemMovie(popularItem = popular)
+                            ItemMovie(movieItem = popular)
                         }
                     }
                 }
@@ -127,7 +127,7 @@ fun RowPopular() {
 
 
 @Composable
-fun ItemMovie(popularItem: PopularItem) {
+fun ItemMovie(movieItem: MovieItem) {
     var visible by remember {
         mutableStateOf(true)
     }
@@ -153,7 +153,7 @@ fun ItemMovie(popularItem: PopularItem) {
                 AsyncImage(
                     modifier = Modifier.fillMaxSize(),
                     model = ImageRequest.Builder(LocalContext.current)
-                        .data(BuildConfig.base_img + popularItem.poster_path).listener(
+                        .data(BuildConfig.base_img + movieItem.poster_path).listener(
                             onSuccess = { request, result ->
                                 visible = false
                             },
@@ -175,7 +175,7 @@ fun ItemMovie(popularItem: PopularItem) {
             ) {
                 Text(
                     modifier = Modifier.weight(2f),
-                    text = popularItem.title,
+                    text = movieItem.title,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                     color = Color.Black,
@@ -195,7 +195,7 @@ fun ItemMovie(popularItem: PopularItem) {
                     )
                     Text(
                         modifier = Modifier,
-                        text = popularItem.vote_average.toString(),
+                        text = movieItem.vote_average.toString(),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         color = Color.Black,

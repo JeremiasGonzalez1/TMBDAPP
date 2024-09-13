@@ -1,17 +1,9 @@
-package com.jg.tmbdapp.data.popular.models
+package com.jg.tmbdapp.data.utils.model
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class PopularDTO(
-    val page: Int,
-    val results : List<ItemPopularDto>,
-    val total_pages: Int,
-    val total_results: Int
-)
-
-@Serializable
-data class ItemPopularDto(
+data class ItemMovieDto(
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,
