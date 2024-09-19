@@ -60,6 +60,8 @@ import com.jg.tmbdapp.presentation.theme.StarColor
 fun HomeScreen( viewModel: HomeViewModel) {
     viewModel.getPopularMovies()
     val listMovies = viewModel.popularList.collectAsState()
+    val listSearch = viewModel.searchList.collectAsState()
+
 
     LazyColumn(modifier = Modifier
         .fillMaxWidth()
@@ -69,7 +71,10 @@ fun HomeScreen( viewModel: HomeViewModel) {
             Spacer(modifier = Modifier.height(16.dp))
         }
         item {
-            SearchBar()
+            SearchBar(listSearch.value){ query->
+                viewModel.searchMovies(query = query)
+            }
+
             Spacer(modifier = Modifier.height(24.dp))
         }
         item {

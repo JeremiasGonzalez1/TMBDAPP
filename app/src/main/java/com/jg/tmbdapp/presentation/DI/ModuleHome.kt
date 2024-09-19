@@ -47,5 +47,5 @@ val moduleHome = module {
 }
 
 val moduleHomeViewModel = module{
-    factory<HomeViewModel>{HomeViewModel(get())}
+    factory<HomeViewModel>{HomeViewModel(get(), get())}
 }
