@@ -1,4 +1,4 @@
-package com.jg.tmbdapp.app.screens
+package com.jg.tmbdapp.app.screens.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

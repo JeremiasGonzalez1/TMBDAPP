@@ -10,16 +10,18 @@ fun PopularDTO.toMap(): Popular {
     val list = this.results.map {
         MovieItem(
             adult = it.adult,
-            backdrop_path =it.backdrop_path,
+            backdropPath =it.backdrop_path,
             id = it.id,
-            original_language = it.original_language,
+            originalLanguage = it.original_language,
             overview = it.overview,
             popularity = it.popularity,
-            poster_path = it.poster_path,
-            vote_average = it.vote_average,
-            vote_count = it.vote_count,
+            posterPath = it.poster_path,
+            voteAverage = it.vote_average,
+            voteCount = it.vote_count,
             title = it.title,
-            original_title = it.original_title,
+            genreList = it.genre_ids,
+            originalTitle = it.original_title,
+            releaseDate = it.release_date
         )
     }
     return Popular(
@@ -33,16 +35,18 @@ fun SearchDTO.toMap(): Search {
     val list = this.results.map {
         MovieItem(
             adult = it.adult,
-            backdrop_path = it.backdrop_path,
+            backdropPath = it.backdrop_path,
             id = it.id,
-            original_language = it.original_language,
+            originalLanguage = it.original_language,
             overview = it.overview,
             popularity = it.popularity,
-            poster_path = it.poster_path,
-            vote_average = it.vote_average,
-            vote_count = it.vote_count,
+            posterPath = it.poster_path,
+            voteAverage = it.vote_average,
+            voteCount = it.vote_count,
             title = it.title,
-            original_title = it.original_title
+            genreList = it.genre_ids,
+            originalTitle = it.original_title,
+            releaseDate = it.release_date
         )
     }
 
