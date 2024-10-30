@@ -64,10 +64,10 @@ fun FutureMovies(movie: MovieItem) {
     ElevatedCard(
         onClick = {},
         modifier = Modifier
-        .fillMaxWidth()
-        .height(108.dp)
-        .clip(RoundedCornerShape(24.dp))
-        .padding(4.dp),
+            .fillMaxWidth()
+            .height(108.dp)
+            .clip(RoundedCornerShape(24.dp))
+            .padding(vertical = 4.dp, horizontal = 16.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp, pressedElevation = 5.dp)
     ){
         Row(modifier = Modifier.fillMaxSize(),
@@ -151,6 +151,14 @@ fun FutureMovies(movie: MovieItem) {
                 }
             }
         }
-
     }
+}
+
+@Composable
+fun FutureMoviesLoader() {
+    ShimmerAnimation(modifier = Modifier
+        .fillMaxWidth()
+        .height(108.dp)
+        .clip(RoundedCornerShape(24.dp))
+        .padding(4.dp) )
 }

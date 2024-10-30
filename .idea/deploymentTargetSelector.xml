@@ -13,26 +13,6 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="DetailsScreen">
-        <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-10-23T18:41:16.557850Z">
-          <Target type="DEFAULT_BOOT">
-            <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=/Users/jeremiasgonzalez/.android/avd/Pixel_7_Pro_API_33.avd" />
-            </handle>
-          </Target>
-        </DropdownSelection>
-        <DialogSelection />
-      </SelectionState>
-      <SelectionState runConfigName="PrevDetailScreen">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="DescriptionMovie">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="FutureMovies">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
       <SelectionState runConfigName="PreviewFutureMovies">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>

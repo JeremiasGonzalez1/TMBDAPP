@@ -30,13 +30,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.jg.tmbdapp.app.components.FutureMovies
+import com.jg.tmbdapp.app.components.FutureMoviesLoader
 import com.jg.tmbdapp.app.components.ItemMovie
 import com.jg.tmbdapp.app.components.ItemMovieLoading
-import com.jg.tmbdapp.features.popular.domain.model.Popular
 import com.jg.tmbdapp.app.components.Profile
 import com.jg.tmbdapp.app.components.SearchBar
 import com.jg.tmbdapp.app.theme.PlayButton
 import com.jg.tmbdapp.app.utils.visible
+import com.jg.tmbdapp.features.utils.models.Movie
 import com.jg.tmbdapp.features.utils.models.MovieItem
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -45,9 +46,10 @@ fun HomeScreen(navigate:(MovieItem)->Unit) {
 
     val viewModel : HomeViewModel = hiltViewModel()
     viewModel.getPopularMovies()
+    viewModel.getUpComingMovies()
     val listMovies = viewModel.popularList.collectAsState()
     val listSearch = viewModel.searchList.collectAsState()
-
+    val listUpComing = viewModel.upComing.collectAsState()
 
     LazyColumn(modifier = Modifier
         .fillMaxWidth()
@@ -83,9 +85,6 @@ fun HomeScreen(navigate:(MovieItem)->Unit) {
                         }
                     }
                 }
-                Box(modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color.Yellow))
             }
             is HomeUIState.Success ->{
                 item {
@@ -93,18 +92,31 @@ fun HomeScreen(navigate:(MovieItem)->Unit) {
                         contentPadding = PaddingValues(horizontal = 16.dp),
                         horizontalArrangement = Arrangement.spacedBy(16.dp)
                     ){
-                        items((listMovies.value as HomeUIState.Success<Popular>).value.listPopular) { popular ->
+                        items((listMovies.value as HomeUIState.Success<Movie>).value.list) { popular ->
                             ItemMovie(movieItem = popular){
                                 navigate(popular)
                             }
                         }
                     }
                 }
+            }
+        }
+
+        when(listUpComing.value){
+            is HomeUIState.Error -> {}
+            is HomeUIState.Loading -> {
+                items(3) {count ->
+                    for (count in 1..3){
+                        FutureMoviesLoader()
+                    }
+                }
+            }
+            is HomeUIState.Success -> {
                 item {
                     Spacer(modifier = Modifier.height(32.dp))
                     RowTittle("Future Movies", false)
                     Spacer(modifier = Modifier.height(16.dp))
-                    (listMovies.value as HomeUIState.Success<Popular>).value.listPopular.onEach { 
+                    (listMovies.value as HomeUIState.Success<Movie>).value.list.onEach {
                         FutureMovies(movie = it)
                     }
                 }

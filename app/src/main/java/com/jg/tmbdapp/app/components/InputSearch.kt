@@ -40,16 +40,16 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.jg.tmbdapp.BuildConfig
 import com.jg.tmbdapp.R
-import com.jg.tmbdapp.features.search.domain.model.Search
 import com.jg.tmbdapp.features.utils.models.MovieItem
 import com.jg.tmbdapp.app.screens.home.HomeUIState
 import com.jg.tmbdapp.app.theme.GraySearch
 import com.jg.tmbdapp.app.theme.PlayButton
 import com.jg.tmbdapp.app.theme.WhiteFC
+import com.jg.tmbdapp.features.utils.models.Movie
 
 
 @Composable
-fun SearchBar(listStatus: HomeUIState<Search>, search: (String)->Unit) {
+fun SearchBar(listStatus: HomeUIState<Movie>, search: (String)->Unit) {
     var input by remember{ mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
     Column(modifier = Modifier.fillMaxSize()) {
@@ -110,7 +110,7 @@ fun SearchBar(listStatus: HomeUIState<Search>, search: (String)->Unit) {
                         CircularProgressIndicator()
                     }
                     is HomeUIState.Success -> {
-                        movies.value.listPopular.onEach {
+                        movies.value.list.onEach {
                             DropdownMenuItem(text = {
 
                                ItemSearch(movieItem = it)

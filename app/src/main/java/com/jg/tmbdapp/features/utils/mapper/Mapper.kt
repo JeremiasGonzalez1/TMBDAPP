@@ -2,11 +2,11 @@ package com.jg.tmbdapp.features.utils.mapper
 
 import com.jg.tmbdapp.features.popular.data.model.PopularDTO
 import com.jg.tmbdapp.features.search.data.model.SearchDTO
-import com.jg.tmbdapp.features.popular.domain.model.Popular
-import com.jg.tmbdapp.features.search.domain.model.Search
+import com.jg.tmbdapp.features.upcoming.data.model.UpComingDTO
+import com.jg.tmbdapp.features.utils.models.Movie
 import com.jg.tmbdapp.features.utils.models.MovieItem
 
-fun PopularDTO.toMap(): Popular {
+fun PopularDTO.toMap(): Movie {
     val list = this.results.map {
         MovieItem(
             adult = it.adult,
@@ -24,14 +24,14 @@ fun PopularDTO.toMap(): Popular {
             releaseDate = it.release_date
         )
     }
-    return Popular(
-        listPopular =list,
+    return Movie(
+        list =list,
         page = this.page,
-        total_pages = this.total_pages,
-        total_results = this.total_results)
+        totalPages = this.total_pages,
+        totalResults = this.total_results)
 }
 
-fun SearchDTO.toMap(): Search {
+fun SearchDTO.toMap(): Movie {
     val list = this.results.map {
         MovieItem(
             adult = it.adult,
@@ -50,8 +50,35 @@ fun SearchDTO.toMap(): Search {
         )
     }
 
-    return Search(listPopular = list,
+    return Movie(list = list,
         page = page,
-        total_pages = total_pages,
-        total_results = total_results)
+        totalPages = total_pages,
+        totalResults = total_results)
+}
+
+fun UpComingDTO.toModel() : Movie {
+    val list = this.results.map {
+        MovieItem(
+            adult = it.adult,
+            backdropPath = it.backdrop_path,
+            id = it.id,
+            originalLanguage = it.original_language,
+            overview = it.overview,
+            popularity = it.popularity,
+            posterPath = it.poster_path,
+            voteAverage = it.vote_average,
+            voteCount = it.vote_count,
+            title = it.title,
+            genreList = it.genre_ids,
+            originalTitle = it.original_title,
+            releaseDate = it.release_date
+        )
+    }
+
+    return Movie(
+        list = list,
+        page = page,
+        totalPages = total_pages,
+        totalResults = total_results
+    )
 }
