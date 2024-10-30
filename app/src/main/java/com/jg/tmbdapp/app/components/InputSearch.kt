@@ -42,7 +42,7 @@ import com.jg.tmbdapp.BuildConfig
 import com.jg.tmbdapp.R
 import com.jg.tmbdapp.features.search.domain.model.Search
 import com.jg.tmbdapp.features.utils.models.MovieItem
-import com.jg.tmbdapp.app.screens.HomeUIState
+import com.jg.tmbdapp.app.screens.home.HomeUIState
 import com.jg.tmbdapp.app.theme.GraySearch
 import com.jg.tmbdapp.app.theme.PlayButton
 import com.jg.tmbdapp.app.theme.WhiteFC
@@ -140,7 +140,7 @@ fun ItemSearch(movieItem: MovieItem) {
             AsyncImage(
                 modifier = Modifier.fillMaxSize(),
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(BuildConfig.base_img + movieItem.poster_path)
+                    .data(BuildConfig.base_img + movieItem.posterPath)
                     .error(R.drawable.ic_launcher_foreground)
                     .build(),
                 contentDescription = null,
