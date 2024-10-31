@@ -4,6 +4,8 @@ import com.jg.tmbdapp.features.popular.domain.interfaces.PopularRepository
 import com.jg.tmbdapp.features.search.domain.interfaces.SearchRepository
 import com.jg.tmbdapp.features.popular.domain.usecase.PopularUseCase
 import com.jg.tmbdapp.features.search.domain.usecase.SearchUseCase
+import com.jg.tmbdapp.features.upcoming.domain.interfaces.UpComingRepositoryInterface
+import com.jg.tmbdapp.features.upcoming.domain.usecase.UpComingUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,6 +26,12 @@ object HomeModule{
     @Singleton
     fun provideUseCaseSearch(repository: SearchRepository): SearchUseCase {
         return SearchUseCase(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideUseCaseUpComing(repository:UpComingRepositoryInterface): UpComingUseCase{
+        return UpComingUseCase(repository)
     }
 }
 

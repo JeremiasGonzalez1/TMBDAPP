@@ -4,4 +4,5 @@ object BaseUrl {
     const val BASE_URL = "https://api.themoviedb.org/3"
     const val POPULAR = "/movie/popular"
     const val SEARCH = "/search/movie"
+    const val UP_COMING = "/movie/upcoming"
 }
